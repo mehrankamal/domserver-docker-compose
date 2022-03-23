@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  judgehost-0:
+    image: domjudge/judgehost:8.0.0
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    hostname: judgehost
+    environment:
+      - DAEMON_ID=0
+    env_file:
+      - judgehost.env
+  judgehost-1:
+    image: domjudge/judgehost:8.0.0
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    hostname: judgehost
+    environment:
+      - DAEMON_ID=1
+    env_file:
+      - judgehost.env
+
+networks:
+  default:
+    external:
+      name: domjudge-net

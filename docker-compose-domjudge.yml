@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  dj-database:
+    image: mariadb:10.7.3
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db_conf:/etc/mysql/conf.d
+      - ./db_data:/var/lib/mysql
+    env_file:
+      - domserver.env
+
+  dj-server:
+    image: domjudge/domserver:8.0.0
+    restart: always
+    ports:
+      - "8080:80"
+    env_file:
+      - domserver.env
+    links:
+      - "dj-database:dj-database"
+
+networks:
+  default:
+    external:
+      name: domjudge-net
