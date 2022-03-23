@@ -11,13 +11,15 @@ This repo serves as running a managing a full domserver using `docker` and `dock
 After you are sure, you have what it needs to run:
 
 Run following in the repo directory on separate terminals:
-> `docker-compose -f docker-compose-domjudge.yml up`
-After this command you should have access to domjudge console at `http://localhost:8080/domjudge`
-Login using `Admin` as username and get the password by running `docker exec -it domjudge_dj-server_1 cat /opt/domjudge/domserver/etc/initial_admin_password.secret`
-
-Edit the `judgehost` user password after that and use that password in `judgehost.env` file
-
-> `docker-compose -f docker-compose-judgehost.yml up`
+> ```docker-compose -f docker-compose-domjudge.yml up```
+>
+> After this command you should have access to domjudge console at `http://localhost:8080/domjudge`
+> 
+> Login using `Admin` as username and get the password by running `docker exec -it domjudge_dj-server_1 cat /opt/domjudge/domserver/etc/initial_admin_password.secret`
+> 
+> Edit the `judgehost` user password after that and use that password in `judgehost.env` file
+> 
+> ```docker-compose -f docker-compose-judgehost.yml up```
 
 That's it.
 
